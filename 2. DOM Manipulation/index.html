@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DOM Manipulation</title>
 
     <style>
         #favorite-subject {
@@ -31,31 +31,57 @@
 
         // Todo 2.1 Select the unordered list with the id "subjects-taken"
         // Resource: https://dev.to/alternate_robot/dom-selectors-in-javascript-344i
+        var subjectsTakenList = document.getElementById("subjects-taken");
+        console.log(subjectsTakenList);
 
         // Checkpoint 2.1 What are the other ways to select elements in the DOM?
-        // Answer:
+        // Answer: Other ways to select elements in the DOM include using querySelector,    
+        // querySelectorAll, getElementsByClassName, getElementsByTagName, etc.
 
         // Todo 2.2 Set the text of the second list item to "IT102 - Python Fundamentals"
         // Resource: https://www.javascripttutorial.net/javascript-dom/javascript-get-child-element/
+        var secondListItem = subjectsTakenList.children[1];
+        secondListItem.innerText = "IT102 - Python Fundamentals";
 
         // Checkpoint 3.2 What is the difference between innerText, textContent, and innerHTML. When should you use one over the other?
         // Answer:
+        // innerText: Gets or sets the text content of the element, and it respects styles.
+        // Use it when you want to get or set the visible text as it appears on the screen.
+        // textContent: Gets or sets the text content of the element, but it doesn't consider styles.
+        // Use it when you want to get or set the raw text content, regardless of styling.
+        // innerHTML: Gets or sets the HTML content of the element. 
+        // Use it when you want to get or set the content as HTML, including any HTML tags.
 
         // Todo 2.3 Create another list item, and add it as a child of the unordered list
         //          Set the text of the list item to your favorite subject
         // Resource: https://www.javascripttutorial.net/dom/manipulating/create-a-dom-element/
+        var newListItem = document.createElement("li");
+        newListItem.textContent = "IT114L - WEB SYSTEMS AND TECHNOLOGIES (LABORATORY)";
+        subjectsTakenList.appendChild(newListItem);
 
         // Todo 2.4 Set the id attribute of the list item you created to "favorite-subject".
         //          Set the class of the list item to "newly-created"
+        newListItem.id = "favorite-subject";
+        newListItem.classList.add("newly-created");
 
         // Todo 2.5 Delete the third list item in the unordered list
+        var thirdListItem = subjectsTakenList.children[2];
+        subjectsTakenList.removeChild(thirdListItem);
 
         // Checkpoint 2.3 What is the difference between node and element?
         // Answer:
+        // - Node: A generic term for any object in the DOM hierarchy, including elements, attributes, and text.
+        // - Element: A specific type of node representing a structural part of an HTML or XML document.
+        //   Elements are the building blocks of a document (e.g., paragraphs, headers).
 
         // Bonus Todo 2.6 Select the parent of the unordered list.
+        var parentOfList = subjectsTakenList.parentNode;
+        console.log(parentOfList);
 
         // Bonus Todo 2.7 Select the previous sibling of the list item you previously created
+        var previousSibling = newListItem.previousElementSibling;
+        console.log(previousSibling);
+
     </script>
 </body>
 
